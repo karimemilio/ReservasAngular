@@ -1,0 +1,20 @@
+<!-- Título -->
+<p class="text-center fs-1">Iniciar sesión</p>
+
+<br>
+
+<!-- Formulario -->
+<div class="custom-center-form">
+  <form (ngSubmit)="login()" #loginForm="ngForm" class="custom-form needs-validation" method="post">
+    <div class="form-group">
+      <label for="email"><b>Dirección de email</b></label>
+      <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" placeholder="ejemplo@mail.com">
+    </div>
+    <div class="mb-3">
+      <label for="password"><b>Contraseña</b></label>
+      <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="passrod" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-success"
+    [disabled]="!loginForm.form.valid">Iniciar sesión</button> &nbsp; <a href="/register" class="link-secondary">No estoy registrado</a>
+  </form>
+</div>

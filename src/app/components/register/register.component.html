@@ -1,0 +1,33 @@
+<!-- Título -->
+<p class="text-center fs-1">Registrar usuario</p>
+
+<br>
+
+<!-- Formulario -->
+<div class="custom-center-form">
+    <form (ngSubmit)="register()" #registerForm="ngForm" class="custom-form needs-validation" method="post">
+        <div class="form-group">
+            <label for="name"><b>Nombre:</b></label>
+            <input type="text" class="form-control" id="name" required [(ngModel)]="name" name="name" placeholder="Nombre">
+        </div>
+
+        <br>
+        
+        <div class="form-group">
+            <label for="email"><b>Dirección de email:</b></label>
+            <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" placeholder="ejemplo@mail.com">
+        </div>
+        
+        <br>
+        
+        <div class="mb-3">
+            <label for="password"><b>Contraseña:</b></label>
+            <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="passrod" placeholder="Password">
+        </div>
+        
+        <br>
+        
+        <button type="submit" class="btn btn-success"
+        [disabled]="!registerForm.form.valid">Crear usuario</button> &nbsp; <a href="/login" class="link-secondary">Ya estoy registrado</a>
+    </form>
+</div>

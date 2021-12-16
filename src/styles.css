@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+    background-color: #E0876A;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+#container {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
+    min-height: 400px;
+  }
+  .custom-center-form {
+    display: flex;
+    justify-content: center;
+  }
+/* .container-2 {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px 40px;
+    border: solid 1px black;
+    margin-top: 20px;
+   } */
+
+.navbar-custom {
+    background-color: #B34532;
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: black;
+}
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
+  .card-child{
+    max-width: 18rem;display: inline-block; margin: 2px;
+  }
+
+  .home-div{
+    background-color: #E0876A;
+
+  }
