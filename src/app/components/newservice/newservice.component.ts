@@ -2,11 +2,11 @@ import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  selector: "app-newservice",
+  templateUrl: "./newservice.component.html",
+  styleUrls: ["./newservice.component.css"]
 })
-export class LoginComponent {
+export class NewserviceComponent {
   email: any;
   password: any;
 
