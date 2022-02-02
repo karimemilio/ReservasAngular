@@ -21,15 +21,18 @@
 
         <div class="d-flex">
             <a class="dropdown-toggle link-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" *ngIf="logged">
-            Bienvenido carlos!
+            Bienvenido {{user}}!
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">Modificar mis datos</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" (click)="func()">Cerrar sesión</a></li>
             </ul>
           <a href="/login" class="link-dark" *ngIf="!logged">Iniciar sesión</a>
         </div>
     </div>
     </div>
 </nav>
+
+<br>
+<br>

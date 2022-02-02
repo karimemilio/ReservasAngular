@@ -1,0 +1,40 @@
+<!-- Título -->
+<p class="text-center fs-1">Editar Servicio {{id}}</p>
+<form (ngSubmit)="save()" #saveForm="ngForm" class="custom-form needs-validation" method="post">
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" placeholder="Nombre">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Tipo</label>
+    <select class="form-select" aria-label="Default select example">
+      <option value="0">Tipo</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="desc">Descripción</label>
+    <input type="text" class="form-control" id="desc" required [(ngModel)]="descripcion" name="desc" placeholder="Descripción">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">URL</label>
+    <input type="url" class="form-control" id="url" required [(ngModel)]="url" name="url" placeholder="URL">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Redes sociales</label>
+    <input type="text" class="form-control" id="rrss" required [(ngModel)]="rrss" name="rrss" placeholder="Redes Sociales">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Teléfono</label>
+    <input type="tel" class="form-control" id="telefono" required [(ngModel)]="telefono" name="telefono" placeholder="Teléfono">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-success" [disabled]="!saveForm.form.valid">Enviar</button>
+  &nbsp;
+  <a href="/services" class="btn btn-danger">Cancelar</a>
+</form>
+
+
+<br>

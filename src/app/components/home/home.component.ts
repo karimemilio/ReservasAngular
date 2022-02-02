@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,18 @@ export class HomeComponent implements OnInit {
   body: any;
   datita: any;
 
-  constructor(private http : HttpClient) { }
+  logged:any;
+  user:any;
+
+  constructor(private http : HttpClient) {
+    console.log("El login service tiene")
+    console.log(LoginService)
+   }
 
   ngOnInit(): void {
     this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(parameter => {
       this.datita=parameter
     })
+
   }
 }

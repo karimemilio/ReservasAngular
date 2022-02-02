@@ -1,6 +1,6 @@
 import { routing } from "./app-routing.module";
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { Injectable, NgModule } from "@angular/core";
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from "./app.component";
@@ -12,13 +12,20 @@ import { ServicesComponent } from './components/services/services.component';
 
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { NewserviceComponent } from "./components/newservice/newservice.component";
+import { LoginService } from "./services/login/login.service";
+import { EditServiceComponent } from "./components/editService/editService.component";
 
+// import { AuthGuard } from "./services/guard/authguard.service";
+// import { DataSharingService } from "./services/datasharing/datasharing.service";
+// import { LoginService } from "./services/login/login.service";
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, NavbarComponent, HomeComponent, ServicesComponent, NewserviceComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, NavbarComponent, HomeComponent, ServicesComponent, NewserviceComponent, EditServiceComponent],
   imports: [BrowserModule, routing, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+
+export class AppModule {
+}
