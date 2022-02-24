@@ -7,12 +7,12 @@
 <div class="home-div" style="text-align: center;">
 
   <div class="card border-dark mb-3 card-child home-div" *ngFor="let data of datita">
-    <div class="card-header bg-transparent border-dark">{{data.id}}</div>
+    <div class="card-header bg-transparent border-dark">{{data.nombre}}</div>
     <div class="card-body text-dark">
-      <h5 class="card-title">{{data.title}}</h5>
+      <h5 class="card-title">{{data.tipo}}</h5>
       <p class="card-text">{{data.body}}</p>
     </div>
-    <div class="card-footer bg-transparent border-dark">{{data.userId}}</div>
+    <div class="card-footer bg-transparent border-dark">{{data.descripcion}}</div>
     <a [routerLink]="['/editservice', data.id]" style="text-decoration: none;">✏️</a>
     <!-- <button (click)="edit(data)" type="button" class="btn btn-link" style="text-decoration: none;">✏️</button> -->
     <button (click)="delete(data.id)" type="button" class="btn btn-link" style="text-decoration: none;">🗑️</button>

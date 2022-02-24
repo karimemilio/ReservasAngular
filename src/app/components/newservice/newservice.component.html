@@ -5,16 +5,33 @@
 
 <!-- Formulario -->
 <div class="custom-center-form">
-  <form (ngSubmit)="login()" #loginForm="ngForm" class="custom-form needs-validation" method="post">
+  <form (ngSubmit)="newService()" #newServiceForm="ngForm" class="custom-form needs-validation" method="post">
     <div class="form-group">
-      <label for="email"><b>Dirección de email</b></label>
-      <input type="email" class="form-control" id="email" required [(ngModel)]="email" name="email" placeholder="ejemplo@mail.com">
+      <label for="nombre"><b>Nombre del servicio</b></label>
+      <input type="text" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" placeholder="Servicio de ...">
     </div>
     <div class="mb-3">
-      <label for="password"><b>Contraseña</b></label>
-      <input type="password" class="form-control" id="password" required [(ngModel)]="password" name="passrod" placeholder="Password">
+      <label for="Tipo"><b>Tipo de servicio</b></label>
+      <input type="text" class="form-control" id="Tipo" required [(ngModel)]="tipo" name="tipo" placeholder="Limpieza">
+    </div>
+    <div class="mb-3">
+      <label for="url"><b>url de servicio</b></label>
+      <input type="text" class="form-control" id="url" required [(ngModel)]="url" name="url" placeholder="www.servicioDeLimpieza.com.ar">
+    </div>
+    <div class="mb-3">
+      <label for="redes"><b>Redes sociales</b></label>
+      <input type="text" class="form-control" id="redes" required [(ngModel)]="redesSociales" name="redes" placeholder="@ServiLimpio">
+    </div>
+    <div class="mb-3">
+      <label for="telefono"><b>telefono </b></label>
+      <input type="text" class="form-control" id="telefono" required [(ngModel)]="telefono" name="telefono" placeholder="2213642589">
+    </div>
+    <div class="mb-3">
+      <label for="descripcion"><b>Descripcion del servicio</b></label>
+      <textarea  class="form-control" id="descripcion" required [(ngModel)]="descripcion" name="descripcion" placeholder="El servicio se trata de....">
+      </textarea>
     </div>
     <button type="submit" class="btn btn-success"
-    [disabled]="!loginForm.form.valid">Iniciar sesión</button> &nbsp; <a href="/register" class="link-secondary">No estoy registrado</a>
+    [disabled]="!newServiceForm.form.valid">Registrar servicio</button> &nbsp; <a href="/index" class="link-secondary">Cancelar</a>
   </form>
 </div>

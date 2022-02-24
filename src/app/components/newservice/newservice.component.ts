@@ -6,17 +6,36 @@ import { Component } from "@angular/core";
   templateUrl: "./newservice.component.html",
   styleUrls: ["./newservice.component.css"]
 })
+
 export class NewserviceComponent {
-  email: any;
-  password: any;
+  id?:any;
+  nombre: any;
+  tipo: any;
+  descripcion: any;
+  url: any;
+  redesSociales: any;
+  telefono: any;
+  urlAltaServicio = 'http://localhost:8080/ttps-spring/api/servicio'
+
 
   constructor(private http: HttpClient) {}
 
-  login() {
-    console.log(this.email);
-    console.log(this.password);
-    this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe(data => {
-      console.log(data);
-    });
+  newService() {
+    let servicioCreado : any
+    console.log(this.nombre);
+    console.log(this.descripcion);
+    console.log(sessionStorage.getItem('userId'));
+    this.http.post(this.urlAltaServicio,{
+      "nombre": this.nombre,
+      "tipo": this.tipo,
+      "descripcion": this.descripcion,
+      "url": this.url,
+      "redesSociales": this.redesSociales,
+      "telefono": this.telefono,
+      "userId": sessionStorage.getItem('userId')} ).subscribe(
+        servicio => servicioCreado = servicio,
+        () => alert("Se creo el servicio cone exito")
+    )
+      window.location.reload()
   }
 }

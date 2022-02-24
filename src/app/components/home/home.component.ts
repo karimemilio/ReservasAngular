@@ -13,9 +13,9 @@ export class HomeComponent implements OnInit {
   title: any;
   body: any;
   datita: any;
-
   logged:any;
   user:any;
+  url_servicios = 'http://localhost:8080/ttps-spring/api/Servicios'
 
   constructor(private http : HttpClient) {
     console.log("El login service tiene")
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(parameter => {
+    this.http.get(this.url_servicios).subscribe(parameter => {
       this.datita=parameter
     })
 

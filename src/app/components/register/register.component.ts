@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { LoginService } from "src/app/services/login/login.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -9,8 +12,11 @@ export class RegisterComponent implements OnInit {
   name: any;
   email: any;
   password: any;
+  user: any;
+  urlRegister = 'http://localhost:8080/ttps-spring/api/newUsuario';
 
-  constructor() { }
+
+  constructor(private http: HttpClient, private authService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,6 +25,19 @@ export class RegisterComponent implements OnInit {
     console.log(this.name);
     console.log(this.email);
     console.log(this.password);
+
+
+    this.http.post<any>(this.urlRegister,{
+      "mail": this.email,
+      "password":this.password  ,
+      "nombre":this.name 
+  }).subscribe( user => this.user = user,
+      err => alert ("El usuario ya existe"),
+      () => {  console.log('Se está logueando');
+      this.authService.setUserLoggedIn(this.user)
+      this.router.navigate(['/index']);
+    }
+   )
   }
 
 }
