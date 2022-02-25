@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   datita: any;
   logged:any;
   user:any;
-  url_servicios = 'http://localhost:8080/ttps-spring/api/Servicios'
+  url_servicios = 'http://localhost:8080/ttps-spring/api/Servicios';
 
   constructor(private http : HttpClient) {
    }
@@ -23,7 +23,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.http.get(this.url_servicios).subscribe(parameter => {
       this.datita=parameter
+      console.log(parameter)
     })
+  }
+
 
   }
-}

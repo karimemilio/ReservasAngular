@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { LoginService } from 'src/app/services/login/login.service';
+import { Service } from "src/app/models/service.model";
 
 
 @Component({
@@ -23,8 +24,10 @@ export class NewserviceComponent {
 
   constructor(private http: HttpClient,private authService: LoginService, private router: Router) {}
 
+
   newService() {
     let servicioCreado : any
+    console.log(this.tipo)
     this.http.post(this.urlAltaServicio,{
       "nombre": this.nombre,
       "tipo": this.tipo,

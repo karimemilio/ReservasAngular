@@ -25,6 +25,7 @@ export class EditUserComponent implements OnInit {
   email: any;
   password: any;
   user: any;
+  nameDelUser:any;
   urlPutUsuario = 'http://localhost:8080/ttps-spring/api/usuario';
 
 
@@ -33,6 +34,7 @@ export class EditUserComponent implements OnInit {
   ngOnInit(): void {
     this.name = this.authService.getUserLoggedIn()['nombre']
     this.email = this.authService.getUserLoggedIn()['mail']
+    this.nameDelUser = this.name
   }
   
   edit() {
@@ -47,9 +49,13 @@ export class EditUserComponent implements OnInit {
   }).subscribe( user => this.user = user,
       err => alert ("El email ya existe, por favor ingrese otro"),
       () => {  alert('El usuario se modifico con exito');
-      this.authService.setUserLoggedIn(this.user)
+      this.authService.setUserLoggedIn(this.user);
       this.router.navigate(['/index']);
     }
    )
+  }
+
+  cancelar():void {
+    this.router.navigate(["/services"]);
   }
 }

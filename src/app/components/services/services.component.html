@@ -1,7 +1,20 @@
 <!-- Título -->
 <p class="text-center fs-1">Mis servicios ofrecidos</p>
 <br>
-<h2>Listado completo</h2>
+
+<!-- <h2 *ngIf="datita" > </h2> -->
+<div *ngIf="datita; else loggedOut">
+  <h2 class="text-center" >  Listado completo</h2>
+</div>
+
+<ng-template #loggedOut>
+  <div class = "text-center">
+  <h2  >Usted no esta brindado servicios</h2>
+  
+  <button (click)="crearServicio()" type="button" class="btn btn-lg btn-success "  >Crear nuevo Servicio</button>
+</div>
+</ng-template>
+
 <hr>
 
 <div class="home-div " style="text-align: center;">
@@ -17,7 +30,8 @@
       <h3 class="card-footer bg-transparent ">{{data.url}}</h3>
       <h3 class="card-footer ">{{data.redesSociales}}</h3>
 
-    <a [routerLink]="['/editservice', data.id]" style="text-decoration: none;" data-toggle="tooltip" data-placement="top" title="Editar el servicio" >✏️</a>
+       <button (click)="edit(data)" type="button" class="btn btn-link" style="text-decoration: none;" data-toggle="tooltip" data-placement="top" title="Editar el servicio">✏️</button>
+
     <button (click)="delete(data.id,data.nombre)" type="button" class="btn btn-link" style="text-decoration: none;" data-toggle="tooltip" data-placement="top" title="Eliminar el servicio" >🗑️</button>
   </div>
 </div>

@@ -7,6 +7,8 @@ export class Service {
     public telefono: number;
     public url: string;
 
+
+
     constructor (id: number, nombre: string, descripcion: string, rrss: string, telefono: number, url: string){
         this.id = id;
         this.nombre = nombre;
@@ -15,4 +17,5 @@ export class Service {
         this.telefono = telefono;
         this.url = url;
     }
+    
 }

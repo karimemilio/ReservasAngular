@@ -11,7 +11,7 @@ import { LoginService } from 'src/app/services/login/login.service';
 export class ServicesComponent implements OnInit {
   userId: any;
   id: any;
-  title: any;
+  title?: any;
   body: any;
   datita: any;
   urlMisServicios = 'http://localhost:8080/ttps-spring/api/ServiciosDeUsuario/'
@@ -19,7 +19,7 @@ export class ServicesComponent implements OnInit {
 
 
   constructor(private http : HttpClient, private router: Router,private authService: LoginService ) { 
-  
+    
   }
 
   ngOnInit(): void {
@@ -35,18 +35,23 @@ export class ServicesComponent implements OnInit {
     if (confirm("Está seguro que desea eliminar el servicio " + nombre + " ?")) {
         this.http.delete(this.urlEliminarServicio+"/"+id).subscribe( 
           servicio => servicioBorrado = servicio,
-          error => alert("No se pudo borrar el servicio seleccionado"),
-          () => alert("Has borrado al servicio  "+ servicioBorrado.nombre)
+          err => alert("No se pudo borrar el servicio seleccionado"),
+          () => {alert("Has borrado al servicio  " + servicioBorrado.nombre);
+          window.location.reload();}
         )
     
-    window.location.reload();
+    
 
     }
   }
 
-  edit(usuario: any){
-    if (confirm("Está seguro que desea editar el servicio " + usuario.id + " ?")) {
-      this.router.navigate(['/editservice']);
+  edit(servicio: any){
+    if (confirm("Está seguro que desea editar el servicio " + servicio.nombre + " ?")) {
+      this.router.navigate(['/editservice',servicio.id]);
     }
+  }
+
+  crearServicio(){
+    this.router.navigate(["/newservice"])
   }
 }

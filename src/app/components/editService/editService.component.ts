@@ -26,27 +26,34 @@ export class EditServiceComponent {
   public tiposServicios = ["Recital","Food truck","Limpieza","Circo","Otro"]
   urlPutServicio = 'http://localhost:8080/ttps-spring/api/servicio' 
   urlGetServicio = 'http://localhost:8080/ttps-spring/api/servicio';
-  
+  nombreActual : any
 
-  constructor(private route: ActivatedRoute,private http: HttpClient) { 
+  constructor(private route: ActivatedRoute,private http: HttpClient,private router: Router) { 
   }
  
   ngOnInit() {
+
     this.routeSub = this.route.params.subscribe(params =>  this.id = params['id']);
     this.http.get(this.urlGetServicio+"/"+this.id).subscribe(parameter => {
-      this.service = parameter
+      this.service = parameter,
+      this.nombreActual = this.service.nombre
     })
+    
+
     
   }
 
-  save(){
-    this.addService()
-    alert("Se guardo")
-  }
 
-  addService (): Observable<Service> {
-    return this.http.post<Service>(this.urlPutServicio, this.service)
-  }
+  save() {
+    this.http.put<Service>(this.urlPutServicio+"/" + this.service.id, this.service).subscribe(
+      parameter => this.service = parameter,
+        err => alert("Se genero un error al editar el servicio"),
+        () => { this.nombreActual = this.service.nombre
+          alert('El servicio '+ this.nombreActual + " se edito con exito");
+          this.router.navigate(["/services"])    }
+        )
+    }
+
   
   getTiposEventos() {
     return this.tiposServicios

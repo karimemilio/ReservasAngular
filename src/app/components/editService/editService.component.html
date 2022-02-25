@@ -1,5 +1,5 @@
 <!-- Título -->
-<p class="text-center fs-1">Editar Servicio {{id}}</p>
+<p class="text-center fs-1">Editar Servicio {{nombreActual}}</p>
 <form (ngSubmit)="save()" #saveForm="ngForm" class="custom-form needs-validation" method="post">
   <div class="form-group">
     <label for="nombre">Nombre</label>
@@ -9,11 +9,11 @@
     <label for="exampleInputEmail1">Tipo</label>
     <select class="form-select" aria-label="Default select example">
 
-     <option value="Recital" ng-select >Recital</option>
-      <option value="Food truck"   >Food truck</option>
-      <option value="Limpieza" selected = {{service.tipo == 'Limpieza'}}>Limpieza</option>
-      <option value="Circo"   >Circo</option>
-      <option value="Otro"    >Otro</option>
+     <option value="Recital" [selected]="service.tipo === 'Recital'"  >Recital</option>
+      <option value="Food truck"  [selected]="service.tipo === 'Food truck'" >Food truck</option>
+      <option value="Limpieza"[selected]="service.tipo === 'Limpieza'" >Limpieza</option>
+      <option value="Circo"  [selected]="service.tipo === 'Circo'" >Circo</option>
+      <option value="Otro"  [selected]="service.tipo === 'Otro'"  >Otro</option>
     </select>
 
   </div>

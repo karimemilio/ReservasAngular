@@ -1,5 +1,5 @@
 <!-- Título -->
-<p class="text-center fs-1">Editar Usuario {{name}} </p>
+<p class="text-center fs-1">Editar Usuario {{nameDelUser}} </p>
 
 <br>
 
@@ -28,7 +28,9 @@
         <br>
         
         <button type="submit" class="btn btn-success"
-        [disabled]="!registerForm.form.valid">Crear usuario</button> &nbsp; <a href="/login" class="link-secondary">Ya estoy registrado</a>
+        [disabled]="!registerForm.form.valid">Editar usuario</button> &nbsp; 
+        <button class="btn btn-danger" (click)="cancelar()"> Cancelar</button>
+        <!-- <a href="/services" class="link-secondary">Cancelar</a> -->
     </form>
 </div>
 <br>

@@ -12,17 +12,15 @@
     </div>
     <div class="mb-3">
       <label for="Tipo"><b>Tipo de servicio</b></label>
-
-      
-      <select class="form-select" aria-label="Default select example">
-        <option value="0">Recital</option>
-        <option value="1">Food truck</option>
-        <option value="2">Limpieza</option>
-        <option value="3">Circo</option>
-        <option value="4">Otro</option>
+      <select [(ngModel)]="tipo"  [ngModelOptions]="{standalone: true}" class="form-select" aria-label="Default select example">
+        <option value="Recital">Recital</option>
+        <option value="Food truck">Food truck</option>
+        <option value="Limpieza">Limpieza</option>
+        <option value="Circo">Circo</option>
+        <option value="Otro">Otro</option>
       </select>
+      <small id="id" class="form-text text-muted">Debe seleccionar una opción.</small>
 
-      
     </div>
     <div class="mb-3">
       <label for="url"><b>url de servicio</b></label>
@@ -41,9 +39,9 @@
       <textarea  class="form-control" id="descripcion" required [(ngModel)]="descripcion" name="descripcion" placeholder="El servicio se trata de....">
       </textarea>
     </div>
-    <button type="submit" class="btn btn-success"
+    <button type="submit" class="btn btn-lg btn-success"
     [disabled]="!newServiceForm.form.valid">Registrar servicio</button> &nbsp; 
-    <button class="btn btn-danger" (click)="cancelar()"> cancelar</button>
+    <button class="btn btn-lg btn-danger" (click)="cancelar()"> cancelar</button>
  
     
     
