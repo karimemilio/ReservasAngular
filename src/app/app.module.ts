@@ -14,6 +14,7 @@ import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { NewserviceComponent } from "./components/newservice/newservice.component";
 import { LoginService } from "./services/login/login.service";
 import { EditServiceComponent } from "./components/editService/editService.component";
+import { EditUserComponent } from "./components/editUser/editUser.component";
 
 // import { AuthGuard } from "./services/guard/authguard.service";
 // import { DataSharingService } from "./services/datasharing/datasharing.service";
@@ -21,7 +22,7 @@ import { EditServiceComponent } from "./components/editService/editService.compo
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent, NavbarComponent, HomeComponent, ServicesComponent, NewserviceComponent, EditServiceComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, NavbarComponent, HomeComponent, ServicesComponent, NewserviceComponent, EditServiceComponent,EditUserComponent],
   imports: [BrowserModule, routing, FormsModule, HttpClientModule],
   providers: [LoginService],
   bootstrap: [AppComponent]

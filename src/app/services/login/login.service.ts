@@ -3,33 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 
-// @Injectable()
-// export class LoginService {
-//     private isUserLoggedIn: boolean;
-//     public userLogged: User | undefined;
-
-//     constructor() {
-//         this.isUserLoggedIn = false;
-//     }
-
-//     isLogged() {
-//         return this.isUserLoggedIn;
-//     }
-    
-//     setUserLoggedIn(user:User) {
-//         alert("variables en true")
-//         this.isUserLoggedIn = true;
-//         this.userLogged = user;
-//         localStorage.setItem('currentUser', JSON.stringify(user));
-//     }
-    
-//     getUserLoggedIn() {
-//         alert("getuserloggedin")
-//         console.log(JSON.parse(localStorage.getItem('currentUser') || '{}'))
-//         return JSON.parse(localStorage.getItem('currentUser') || '{}');
-//     }
-// }
-
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
@@ -40,7 +13,7 @@ export class LoginService {
 
     constructor(private http: HttpClient) {
         this.isUserLoggedIn = false;
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')|| '{}'));
+        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')|| '{}'));
         this.currentUser = this.currentUserSubject.asObservable();
     }
     public get currentUserValue(): User {
@@ -49,25 +22,29 @@ export class LoginService {
 
 
     isLogged() {
-        return (JSON.parse(localStorage.getItem('currentUser') || '{}')["nombre"] != undefined)
+        return (JSON.parse(sessionStorage.getItem('currentUser') || '{}')["nombre"] != undefined)
         // return this.isUserLoggedIn;
     }
     
     setUserLoggedIn(user:User) {
         this.isUserLoggedIn = true;
         this.userLogged = user;
-        localStorage.setItem('currentUser', JSON.stringify(user));
+        const userAutenticado = {"id": user.id,
+                                "nombre": user.nombre,
+                                "mail": user.mail
+                                }
+        sessionStorage.setItem('currentUser', JSON.stringify(userAutenticado));
         this.currentUserSubject.next(user);
     }
     
     getUserLoggedIn() {
-        console.log(JSON.parse(localStorage.getItem('currentUser') || '{}'))
-        return JSON.parse(localStorage.getItem('currentUser') || '{}');
+        console.log(JSON.parse(sessionStorage.getItem('currentUser') || '{}'))
+        return JSON.parse(sessionStorage.getItem('currentUser') || '{}');
     }
 
     logout() {
-        // elimino las credenciales del localstorage al deslogearme
-        localStorage.removeItem('currentUser');
+        // elimino las credenciales del sessionStorage al deslogearme
+        sessionStorage.removeItem('currentUser');
         window.location.reload();
 
         // this.currentUserSubject.next(null);

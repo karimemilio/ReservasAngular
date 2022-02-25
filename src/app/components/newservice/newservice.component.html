@@ -12,7 +12,17 @@
     </div>
     <div class="mb-3">
       <label for="Tipo"><b>Tipo de servicio</b></label>
-      <input type="text" class="form-control" id="Tipo" required [(ngModel)]="tipo" name="tipo" placeholder="Limpieza">
+
+      
+      <select class="form-select" aria-label="Default select example">
+        <option value="0">Recital</option>
+        <option value="1">Food truck</option>
+        <option value="2">Limpieza</option>
+        <option value="3">Circo</option>
+        <option value="4">Otro</option>
+      </select>
+
+      
     </div>
     <div class="mb-3">
       <label for="url"><b>url de servicio</b></label>

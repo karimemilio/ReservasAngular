@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { User } from "src/app/models/user.model";
 import { LoginService } from "src/app/services/login/login.service";
 import { HttpHeaders } from '@angular/common/http';
 
@@ -28,8 +27,13 @@ export class LoginComponent {
 
   constructor(private http: HttpClient, private authService: LoginService, private router: Router ) {}
 
-  login() {
+  ngOnInit(): void{
+    if (this.authService.isLogged()){
+      this.router.navigate(['/home'])
+    }
+  }
 
+  login() {
     this.http.post<any>(this.urlAutentificar,{
       "email": this.email,
       "password":this.password   
@@ -38,9 +42,6 @@ export class LoginComponent {
       () => {this.usuarioValido = true,
       console.log('Se está logueando');
       this.authService.setUserLoggedIn(this.user)
-      sessionStorage.setItem('userId',this.user.id)
-      sessionStorage.setItem('email',this.user.mail)
-      sessionStorage.setItem('nombre',this.user.nombre)
       this.router.navigate(['/index']);
     }
     

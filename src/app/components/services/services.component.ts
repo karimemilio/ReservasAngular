@@ -18,12 +18,12 @@ export class ServicesComponent implements OnInit {
   urlEliminarServicio = 'http://localhost:8080/ttps-spring/api/servicio/'
 
 
-  constructor(private http : HttpClient, private router: Router ) { 
+  constructor(private http : HttpClient, private router: Router,private authService: LoginService ) { 
   
   }
 
   ngOnInit(): void {
-    let userId = sessionStorage.getItem('userId')
+    let userId = this.authService.getUserLoggedIn()["id"]
     console.log(userId)
 
     this.http.get(this.urlMisServicios+"/"+userId).subscribe(parameter => {
@@ -50,7 +50,6 @@ export class ServicesComponent implements OnInit {
   edit(usuario: any){
     console.log("El numero de id es: ", usuario.id)
     if (confirm("Está seguro que desea editar el servicio " + usuario.id + " ?")) {
-      // this.router.navigate(['/editservice']);
       this.router.navigate(['/editservice']);
     }
   }

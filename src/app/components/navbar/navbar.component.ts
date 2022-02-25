@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.logged = this.authService.isLogged()
     this.user = this.authService.getUserLoggedIn()["nombre"]
+    let id  = this.authService.getUserLoggedIn()["id"]
+    console.log("algo id "+id)
   }
   
   func(): void {
