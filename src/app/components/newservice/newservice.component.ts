@@ -37,12 +37,14 @@ export class NewserviceComponent {
       "telefono": this.telefono,
       "userId": this.authService.getUserLoggedIn()["id"]} ).subscribe(
         servicio => servicioCreado = servicio,
-        () => {alert("Se creo el servicio cone exito");
+        err => {alert ("Ocurrio un error al crear el servicio")},
+        () => {alert("Se creo el servicio "+ servicioCreado.nombre+ " con exito");
+          this.router.navigate(["/services"])
           
       }
      
     )
-    window.location.reload()
+    
     }
 
   cancelar(): void {

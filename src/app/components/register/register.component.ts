@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
       "password":this.password  ,
       "nombre":this.name 
   }).subscribe( user => this.user = user,
-      err => alert ("El usuario ya existe"),
+      err => alert ("Ya existe un usuario con su mail"),
       () => { this.authService.setUserLoggedIn(this.user)
       this.router.navigate(['/index']);
     }
