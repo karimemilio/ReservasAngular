@@ -22,19 +22,13 @@ export class RegisterComponent implements OnInit {
   }
   
   register() {
-    console.log(this.name);
-    console.log(this.email);
-    console.log(this.password);
-
-
     this.http.post<any>(this.urlRegister,{
       "mail": this.email,
       "password":this.password  ,
       "nombre":this.name 
   }).subscribe( user => this.user = user,
       err => alert ("El usuario ya existe"),
-      () => {  console.log('Se está logueando');
-      this.authService.setUserLoggedIn(this.user)
+      () => { this.authService.setUserLoggedIn(this.user)
       this.router.navigate(['/index']);
     }
    )

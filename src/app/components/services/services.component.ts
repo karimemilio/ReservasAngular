@@ -24,31 +24,27 @@ export class ServicesComponent implements OnInit {
 
   ngOnInit(): void {
     let userId = this.authService.getUserLoggedIn()["id"]
-    console.log(userId)
 
     this.http.get(this.urlMisServicios+"/"+userId).subscribe(parameter => {
       this.datita=parameter
     })
   }
 
-  delete(id: number){
+  delete(id: number,nombre:string){
     let servicioBorrado: any
-    console.log("El numero de id es: ", id)
-    if (confirm("Está seguro que desea eliminar el servicio " + id + " ?")) {
+    if (confirm("Está seguro que desea eliminar el servicio " + nombre + " ?")) {
         this.http.delete(this.urlEliminarServicio+"/"+id).subscribe( 
           servicio => servicioBorrado = servicio,
           error => alert("No se pudo borrar el servicio seleccionado"),
           () => alert("Has borrado al servicio  "+ servicioBorrado.nombre)
         )
     
-    console.log(servicioBorrado)
     window.location.reload();
 
     }
   }
 
   edit(usuario: any){
-    console.log("El numero de id es: ", usuario.id)
     if (confirm("Está seguro que desea editar el servicio " + usuario.id + " ?")) {
       this.router.navigate(['/editservice']);
     }

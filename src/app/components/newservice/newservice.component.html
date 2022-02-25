@@ -6,9 +6,9 @@
 <!-- Formulario -->
 <div class="custom-center-form">
   <form (ngSubmit)="newService()" #newServiceForm="ngForm" class="custom-form needs-validation" method="post">
-    <div class="form-group">
+    <div class="form-group mb-3">
       <label for="nombre"><b>Nombre del servicio</b></label>
-      <input type="text" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" placeholder="Servicio de ...">
+      <input type="text"  size="50" class="form-control" id="nombre" required [(ngModel)]="nombre" name="nombre" placeholder="Servicio de ...">
     </div>
     <div class="mb-3">
       <label for="Tipo"><b>Tipo de servicio</b></label>
@@ -42,6 +42,10 @@
       </textarea>
     </div>
     <button type="submit" class="btn btn-success"
-    [disabled]="!newServiceForm.form.valid">Registrar servicio</button> &nbsp; <a href="/index" class="link-secondary">Cancelar</a>
+    [disabled]="!newServiceForm.form.valid">Registrar servicio</button> &nbsp; 
+    <button class="btn btn-danger" (click)="cancelar()"> cancelar</button>
+ 
+    
+    
   </form>
 </div>

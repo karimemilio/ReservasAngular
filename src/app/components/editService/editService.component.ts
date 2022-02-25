@@ -33,7 +33,6 @@ export class EditServiceComponent {
  
   ngOnInit() {
     this.routeSub = this.route.params.subscribe(params =>  this.id = params['id']);
-    console.log(this.id)
     this.http.get(this.urlGetServicio+"/"+this.id).subscribe(parameter => {
       this.service = parameter
     })
@@ -50,7 +49,6 @@ export class EditServiceComponent {
   }
   
   getTiposEventos() {
-    console.log(this.tiposServicios)
     return this.tiposServicios
   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Component } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoginService } from 'src/app/services/login/login.service';
 
 
@@ -20,14 +21,10 @@ export class NewserviceComponent {
   urlAltaServicio = 'http://localhost:8080/ttps-spring/api/servicio'
 
 
-  constructor(private http: HttpClient,private authService: LoginService) {}
+  constructor(private http: HttpClient,private authService: LoginService, private router: Router) {}
 
   newService() {
     let servicioCreado : any
-    console.log(this.nombre);
-    console.log(this.descripcion);
-    // console.log(sessionStorage.getItem('userId'));
-
     this.http.post(this.urlAltaServicio,{
       "nombre": this.nombre,
       "tipo": this.tipo,
@@ -37,8 +34,15 @@ export class NewserviceComponent {
       "telefono": this.telefono,
       "userId": this.authService.getUserLoggedIn()["id"]} ).subscribe(
         servicio => servicioCreado = servicio,
-        () => alert("Se creo el servicio cone exito")
+        () => {alert("Se creo el servicio cone exito");
+          
+      }
+     
     )
-      window.location.reload()
+    window.location.reload()
+    }
+
+  cancelar(): void {
+    this.router.navigate(['/index']);
   }
 }

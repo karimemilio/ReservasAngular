@@ -40,7 +40,6 @@ export class LoginComponent {
   }).subscribe( user => this.user = user,
       error => alert ("El usuario es invalido "),
       () => {this.usuarioValido = true,
-      console.log('Se está logueando');
       this.authService.setUserLoggedIn(this.user)
       this.router.navigate(['/index']);
     }

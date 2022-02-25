@@ -4,18 +4,22 @@
 <h2>Listado completo</h2>
 <hr>
 
-<div class="home-div" style="text-align: center;">
-
-  <div class="card border-dark mb-3 card-child home-div" *ngFor="let data of datita">
-    <div class="card-header bg-transparent border-dark">{{data.nombre}}</div>
+<div class="home-div " style="text-align: center;">
+ 
+  <div class="card border-dark card-child home-div text-white bg-secondary" *ngFor="let data of datita">
+    <h1 class="card-header bg-transparent border-dark">{{data.nombre}}</h1>
     <div class="card-body text-dark">
-      <h5 class="card-title">{{data.tipo}}</h5>
-      <p class="card-text">{{data.body}}</p>
+      <h2 class="card-title">{{data.tipo}}</h2>
+      <p class="card-text">{{data.descripcion}}</p>
     </div>
-    <div class="card-footer bg-transparent border-dark">{{data.descripcion}}</div>
-    <a [routerLink]="['/editservice', data.id]" style="text-decoration: none;">✏️</a>
-    <!-- <button (click)="edit(data)" type="button" class="btn btn-link" style="text-decoration: none;">✏️</button> -->
-    <button (click)="delete(data.id)" type="button" class="btn btn-link" style="text-decoration: none;">🗑️</button>
+    <div>
+      <h3 class="card-footer bg-transparent border-dark">{{data.telefono}}</h3>
+      <h3 class="card-footer bg-transparent ">{{data.url}}</h3>
+      <h3 class="card-footer ">{{data.redesSociales}}</h3>
+
+    <a [routerLink]="['/editservice', data.id]" style="text-decoration: none;" data-toggle="tooltip" data-placement="top" title="Editar el servicio" >✏️</a>
+    <button (click)="delete(data.id,data.nombre)" type="button" class="btn btn-link" style="text-decoration: none;" data-toggle="tooltip" data-placement="top" title="Eliminar el servicio" >🗑️</button>
   </div>
+</div>
 
 </div>

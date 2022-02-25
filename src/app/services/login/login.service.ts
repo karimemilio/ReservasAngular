@@ -38,7 +38,6 @@ export class LoginService {
     }
     
     getUserLoggedIn() {
-        console.log(JSON.parse(sessionStorage.getItem('currentUser') || '{}'))
         return JSON.parse(sessionStorage.getItem('currentUser') || '{}');
     }
 

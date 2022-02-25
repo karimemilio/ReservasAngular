@@ -7,24 +7,25 @@
 
 <br>
 
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+<p> Bienvenido a Reservas. En esta pagina tendras la posibilidad de ofrecer servicios y/o acceder a servicios ofrecidos por otras personas.
+    Tenemos la filosofia el cual creemos que todos aquellos que quieran ofrecer o contratar un servicio lo hagan de forma gratuita y respaldada por nosotros.
 </p>
+<p>Nuestra pagina esta en constante actualizaciones y nuevas mejoras que van ir surgiendo a lo largo del mes </p>
 
 <br>
 
-<h2>Ranking de servicios</h2>
+<h2 class="text-center">Ranking de servicios</h2>
 <hr>
 
 <div class="home-div" style="text-align: center;">
 
-  <div class="card border-dark mb-3 card-child home-div" *ngFor="let data of datita">
-    <div class="card-header bg-transparent border-dark">{{data.id}}</div>
+  <div class="card border-dark mb-3 card-child home-div text-white bg-secondary" *ngFor="let data of datita">
+    <h1 class="card-header bg-transparent border-dark">{{data.nombre}}</h1>
     <div class="card-body text-dark">
-      <h5 class="card-title">{{data.nombre}}</h5>
-      <p class="card-text">{{data.tipo}}</p>
+      <h5 class="card-title">{{data.tipo}}</h5>
       <p class="card-text">{{data.descripcion}}</p>
     </div>
-    <div class="card-footer bg-transparent border-dark">{{data.duenio.id}}</div>
+    <div class="card-footer bg-transparent border-dark">dueño: {{data.duenio.nombre}}</div>
   </div>
 
 </div>

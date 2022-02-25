@@ -36,9 +36,7 @@ export class EditUserComponent implements OnInit {
   }
   
   edit() {
-    
-    console.log(this.name);
-    console.log(this.email);
+
     const userId = this.authService.getUserLoggedIn()["id"]
 
 
@@ -47,7 +45,7 @@ export class EditUserComponent implements OnInit {
       "password":this.password,
       "nombre":this.name 
   }).subscribe( user => this.user = user,
-      err => alert ("El usuario ya existe"),
+      err => alert ("El email ya existe, por favor ingrese otro"),
       () => {  alert('El usuario se modifico con exito');
       this.authService.setUserLoggedIn(this.user)
       this.router.navigate(['/index']);

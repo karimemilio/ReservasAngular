@@ -18,8 +18,6 @@ export class HomeComponent implements OnInit {
   url_servicios = 'http://localhost:8080/ttps-spring/api/Servicios'
 
   constructor(private http : HttpClient) {
-    console.log("El login service tiene")
-    console.log(LoginService)
    }
 
   ngOnInit(): void {
